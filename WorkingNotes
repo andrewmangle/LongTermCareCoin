@@ -1,0 +1,67 @@
+I have successfully tested pushing and pulling data from a smart contract following the format discussed in prior meetings (attached)
+
+You can push and pull data using the smart contract. I have attached instructions to this email.
+Query - Pull 
+	http://204.48.26.111/ltccoin/web3.php/examples/ltcpull.php?patientID=11&resultType=1
+	Returns the following information for patientID = 1:
+		PatientType
+		Hash 1
+		Hash 2
+		Hash 3
+		Hash 4
+		Hash 5
+
+	http://204.48.26.111/ltccoin/web3.php/examples/ltcpull.php?patientID=11&resultType=2
+	Returns the following information for patientID = 1:
+		PatientType
+		Hash 6
+		Hash 7
+		Hash 8
+		Hash 9
+		Hash N
+
+All stored hashes will be in the keccak256 format
+
+Query - Push - New Patient w/ hash of patient info
+	http://204.48.26.111/ltccoin/web3.php/examples/ltcpushNew.php?patientID=20&patientType=1&hash1=0x2020202020
+	
+	Pushes into the Smart Contract
+		PatientID = 20
+		PatientType = 1
+		Hash 1 = 0x2020202020000000000000000000000000000000000000000000000000000000
+
+Query - Push - Patient Hash Details
+	http://204.48.26.111/ltccoin/web3.php/examples/ltcpushDetails.php?patientID=20&hashType=5&hashValue=0x2055555
+
+	Pushes into the Smart Contract
+		PatientID = 20
+		Hash 5 = 0x2255555000000000000000000000000000000000000000000000000000000000
+
+Patient ID - 32-bit unsigned integer
+Patient Type - 8-bit unsigned integer
+Hash 1 - 9,N - 32 byte - Needs to start with a 0x - kecaak256 format
+	Example: 0x3330000000000000000000000000000000000000000000000000000000000000
+
+The output will be similar to:
+{"jsonrpc":"2.0","id":1,"result":"0x291b726a6a109221aa38c53553e2c8ed918b7ab675a1ec0419ca15b8e64d3e3c"}
+
+You can place the result (bold/italic above) in the following URL
+	https://poseidon.pirl.io/explorer/transaction/RESULT-PLACE-IT-HERE
+	
+	Example using the above example:
+	https://poseidon.pirl.io/explorer/transaction/0x291b726a6a109221aa38c53553e2c8ed918b7ab675a1ec0419ca15b8e64d3e3c/
+
+	An alternative - paste the same result into https://wallet.pirl.io/#check-tx-status
+
+You can view the contents of the contract here: https://wallet.pirl.io/#contracts
+	Contract Address: 0xDba6d0A315043740A262eFfe2e018d0F95ec536E
+	Contract ABI:
+[ { "constant": false, "inputs": [ { "name": "patientID", "type": "uint32" }, { "name": "Hash9", "type": "bytes32" } ], "name": "PatientHash9", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "patientID", "type": "uint32" }, { "name": "Hash3", "type": "bytes32" } ], "name": "PatientHash3", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "patientID", "type": "uint32" }, { "name": "Hash8", "type": "bytes32" } ], "name": "PatientHash8", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "patientID", "type": "uint32" }, { "name": "HashN", "type": "bytes32" } ], "name": "PatientHashN", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "patientID", "type": "uint32" }, { "name": "Hash7", "type": "bytes32" } ], "name": "PatientHash7", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "patientID", "type": "uint32" }, { "name": "Hash4", "type": "bytes32" } ], "name": "PatientHash4", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "patientID", "type": "uint32" }, { "name": "Hash5", "type": "bytes32" } ], "name": "PatientHash5", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "patientID", "type": "uint32" }, { "name": "typeID", "type": "uint8" }, { "name": "PRHash", "type": "bytes32" } ], "name": "newPatient", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "owner", "outputs": [ { "name": "", "type": "address", "value": "0x0c0c665b6db2b5535c0c434d32a8700b45394900" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [ { "name": "patientID", "type": "uint32" } ], "name": "getPatientRecordA", "outputs": [ { "name": "patienttype", "type": "uint8", "value": "0" }, { "name": "hash1", "type": "bytes32", "value": "0x0000000000000000000000000000000000000000000000000000000000000000" }, { "name": "hash2", "type": "bytes32", "value": "0x0000000000000000000000000000000000000000000000000000000000000000" }, { "name": "hash3", "type": "bytes32", "value": "0x0000000000000000000000000000000000000000000000000000000000000000" }, { "name": "hash4", "type": "bytes32", "value": "0x0000000000000000000000000000000000000000000000000000000000000000" }, { "name": "hash5", "type": "bytes32", "value": "0x0000000000000000000000000000000000000000000000000000000000000000" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "patientID", "type": "uint32" }, { "name": "Hash6", "type": "bytes32" } ], "name": "PatientHash6", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [ { "name": "patientID", "type": "uint32" } ], "name": "getPatientRecordB", "outputs": [ { "name": "patienttype", "type": "uint8", "value": "0" }, { "name": "hash6", "type": "bytes32", "value": "0x0000000000000000000000000000000000000000000000000000000000000000" }, { "name": "hash7", "type": "bytes32", "value": "0x0000000000000000000000000000000000000000000000000000000000000000" }, { "name": "hash8", "type": "bytes32", "value": "0x0000000000000000000000000000000000000000000000000000000000000000" }, { "name": "hash9", "type": "bytes32", "value": "0x0000000000000000000000000000000000000000000000000000000000000000" }, { "name": "hashN", "type": "bytes32", "value": "0x0000000000000000000000000000000000000000000000000000000000000000" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "patientID", "type": "uint32" }, { "name": "Hash2", "type": "bytes32" } ], "name": "PatientHash2", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "payable": true, "stateMutability": "payable", "type": "constructor" } ]
+
+	Both textboxes should now be green, so Press "Access":
+
+	Select a function - I recommend getPatientRecordA which will return the PatientID, PatientType, and Hashes 1 - 5
+		In the patientID textbook, enter 20 
+		Scroll to the end and press READ
+	
+	You will see the stored data for PatientID = 20
